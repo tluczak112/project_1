@@ -86,7 +86,6 @@ function searchBandsInTown(artist) {
                 for(var i = 0; i<10;i++){
                     console.log(trackArray[i].name);
                     var track = trackArray[i].name;
-                    // var playCount = trackArray[i].playcount;
                     var trackDiv = $("<div>");
                     trackDiv.addClass("track")
                     trackDiv.attr("data-artist",artistName);
