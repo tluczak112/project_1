@@ -1,0 +1,31 @@
+.artist-div{
+    width: 400px;
+    border:1px solid black;
+}
+
+.track-div{
+    width: 400px;
+    border:1px solid black;
+
+}
+
+.left-div{
+    float: left;
+}
+.track{
+    background: skyblue;
+    border:1px solid white;
+}
+
+.track:hover{
+    background: teal;
+    cursor: pointer;
+}
+
+.lyric{
+    float: left;
+    border: 1px solid black;
+    height:500px;
+    overflow: auto;
+    margin-left:20px;
+}
