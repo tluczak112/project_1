@@ -9,7 +9,7 @@ body {
     padding:0;
     width:100%;
     text-align: center;
-    background: url(http://www.s3forums.com/forum/attachments/galaxy-s3-graphics/11454d1399706454-share-your-wallpaper-27123-lagoon-night-1920x1080-beach-wallpaper.jpg) no-repeat 50% 50%;
+    background: url(http://www.s3forums.com/forum/attachments/galaxy-s3-graphics/11454d1399706454-share-your-wallpaper-27123-lagoon-night-1920x1080-beach-wallpaper.jpg) no-repeat 50% 50%; 
     background-size: cover;
     height: 100vh;
     display:table; 
@@ -30,6 +30,11 @@ path {
     opacity: 10;
     animation: animate 3s cubic-bezier(0,0.23,1,.1);
 }
+
+.st0{fill:none;}
+.st1{fill:#fff;stroke:#FFFFFF;stroke-miterlimit:10;}
+
+
 
 @keyframes animate {
     0% {

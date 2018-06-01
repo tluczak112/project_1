@@ -1,5 +1,6 @@
 
-function generateTags(){
+ $(document).ready(function() {
+     function generateTags(){
     var apiKeyLastFm ="c5170f76db40cf305fa1f7989ee80687";
     queryURLTags = "http://ws.audioscrobbler.com/2.0/?method=tag.getTopTags&api_key="+apiKeyLastFm+"&format=json";
     $.ajax({
@@ -10,14 +11,17 @@ function generateTags(){
         var tagArray = response.toptags.tag;
         for(var i = 0; i < 10; i++){
             console.log(tagArray[i].name);
-            var tagBtn = $("<button>").text(tagArray[i].name);
+            var tag = tagArray[i].name;
+            var tagBtn = $("<button>").text(tag);
+            tagBtn.addClass("tagBtn");
+            tagBtn.attr("data-genre",tag);
             $("#tag").append(tagBtn);
         }
       });
 }
 
 
-// generateTags();
+ generateTags();
 
 function searchBandsInTown(artist) {
     var apiKeyBandInTown = "codingbootcamp";
@@ -35,6 +39,7 @@ function searchBandsInTown(artist) {
       $("#top-track-div").removeClass();
       $("#lyric-div").removeClass();
       $("#lyric-div").empty();
+      $("#genre-div").empty();
        console.log(queryURLArtist);
        console.log(response);
       
@@ -109,6 +114,7 @@ function searchBandsInTown(artist) {
     var apiKey = "S0unXXfz6D5EzyIM6971qYOyXZa96p0TB8WIPPxH1NCAPNT17QMNVPlrWFEMg6mL";
     $("#lyric-div").addClass("lyric");
     var queryURLLyric = "https://orion.apiseeds.com/api/music/lyric/"+artist+"/"+inputTrack+"?apikey="+apiKey;
+    console.log(queryURLLyric);
     $.ajax({
         url: queryURLLyric,
         method: "GET"
@@ -122,5 +128,38 @@ function searchBandsInTown(artist) {
         var inputTrackHtml = $("<h1>").text("Lyric: "+inputTrack);
         $("#lyric-div").append(inputTrackHtml, "Lyric Not Found"); 
     });
+ });
 
-  });
+ $("#tag").on("click",".tagBtn",function(){
+     var genre = $(this).attr("data-genre");
+     console.log(genre+" this is clicked");
+     var apiKeyLastFm ="c5170f76db40cf305fa1f7989ee80687";
+     var queryURLTag = "http://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag="+genre+"&api_key="+apiKeyLastFm+"&format=json";
+     console.log(queryURLTag);
+     $("#genre-div").empty();
+     $("#top-track-div").empty();
+     $("#artist-div").empty();
+     $("#top-track-div").removeClass();
+     $("#artist-div").removeClass();
+     $("#lyric-div").empty();
+     $("#lyric-div").removeClass();
+     $.ajax({
+        url: queryURLTag,
+        method: "GET"
+    }).then(function(response) {
+        console.log(response);
+        var toptrackArrayByGenre = response.tracks.track;
+        for(var i = 0; i < 10; i++){
+              var track = toptrackArrayByGenre[i].name;
+              var artist = toptrackArrayByGenre[i].artist.name;
+              console.log(track, artist);
+              var trackDiv = $("<div>").html(track+" by "+artist);
+              trackDiv.addClass("track");
+              $("#genre-div").append(trackDiv);
+        }
+    }).fail(function() {
+        console.log("error");
+    });
+     
+  })
+});
