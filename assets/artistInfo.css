@@ -3,6 +3,10 @@
     border:1px solid black;
 }
 
+.artist-div img{
+    width:250px;
+}
+
 .track-div{
     width: 400px;
     border:1px solid black;
@@ -28,4 +32,9 @@
     height:500px;
     overflow: auto;
     margin-left:20px;
+}
+
+#tag button{
+   margin-right:10px;
+   margin-top:10px;
 }
