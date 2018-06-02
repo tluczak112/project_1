@@ -38,3 +38,10 @@
    margin-right:10px;
    margin-top:10px;
 }
+
+#video-div{
+    float: right;
+    width: 500px;
+    height:300px;
+    border:1px solid red;
+}
