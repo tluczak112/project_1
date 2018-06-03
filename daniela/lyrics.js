@@ -24,67 +24,110 @@ $(document).ready(function () {
 
 
 
-var apiTickets = "hkwzBibHMfcvN0cppcq6tQrtKdHlCp44";
-var city = "Los Angeles";
-var keyword = "Aubrey & The Three Migos Tour";
-var querlyUrlTicketmaster = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&keyword=" + keyword + "&classificationName=music&dmaId=324&apikey=" + apiTickets; 
+// var apiTickets = "hkwzBibHMfcvN0cppcq6tQrtKdHlCp44";
+// var city = "Los Angeles";
+// var keyword = "maroon 5";
+// var querlyUrlTicketmaster = "https://app.ticketmaster.com/discovery/v2/attractions.json?city=" + city + "&keyword=" + keyword + "&classificationName=music&dmaId=324&apikey=" + apiTickets; 
 
 
 
 
-    $.ajax({
-        url: querlyUrlTicketmaster,
-        method: "GET"
-    }).then(function (response) {
-        var results = response._embedded.events;
-        // console.log(response._embedded.events)
+//     $.ajax({
+//         url: querlyUrlTicketmaster,
+//         method: "GET"
+//     }).then(function (response) {
+//         var results = response._embedded.attractions;
+//         // console.log(response._embedded.events)
 
-        for(i = 0; i < results.length; i++){
-            console.log(results[i]);
+//         for(i = 0; i < results.length; i++){
+//             // console.log(results[i]);
 
-            console.log(results[i].name);
-            console.log(results[i].url);
-            console.log(results[i].images);
-            console.log(results[i].images[0].url);
+//             // console.log(results[i].name);
+//             // console.log(results[i].url);
+//             // console.log(results[i].images);
+//             // console.log(results[i].images[0].url);
 
          
-            $(".d-block").attr("src", results[i].images[1].url);
-            $(".d-block").append(results[i].images[1].url);
-            var slide = ".slide" + i;
-            $(slide).append(results[i].name + i);
-            $(".tickets").attr("href", results[i].url);
+//             $(".d-block").attr("src", results[i].images[1].url);
+//             $(".d-block").append(results[i].images[1].url);
+//             var slide = ".slide" + i;
+//             $(slide).append(results[i].name + i);
+//             $(".tickets").attr("href", results[i].url);
+//         }
+
+
+//         $(".map-widget").attr("w-keyword", keyword);
+//         $('body').append("<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyADTX9e9tTjKQGNM7GwtlGCfwGWGg2298U&libraries=visualization,places' async defer> </script>");
+//         $('body').append("<script src='https://ticketmaster-api-staging.github.io/products-and-docs/widgets/map/1.0.0/lib/main-widget.js'> </script>");
+
+//     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var apiTickets = "hkwzBibHMfcvN0cppcq6tQrtKdHlCp44";
+    var city = "Los Angeles";
+    var keyword = "korn";
+    var querlyUrlTicketmaster = "https://app.ticketmaster.com/discovery/v2/attractions.json?city=" + city + "&keyword=" + keyword + "&classificationName=music&dmaId=324&apikey=" + apiTickets;
+
+    $.ajax({
+        type: "GET",
+        url: querlyUrlTicketmaster,
+        async: true,
+        dataType: "json",
+        success: function (response) {
+            var results = response._embedded.attractions;
+            // console.log(response._embedded.attractions)
+
+            for (i = 0; i < results.length; i++) {
+                // console.log(results[i]);
+
+                // console.log(results[i].name);
+                var slide = ".slide" + i;
+                $(slide).append(results[i].name + i);
+
+                console.log(results[i].url);
+                $(".tickets").attr("href", results[i].url);
+                // console.log(results[i].images);
+                // console.log(results[i].images[1].url);
+                $(".d-block").attr("src", results[i].images[1].url);
+                $(".d-block").append(results[i].images[1].url);
+
+
+                // $(".d-block").attr("src", results[i].images[1].url);
+                // $(".d-block").append(results[i].images[1].url);
+                // var slide = ".slide" + i;
+                // $(slide).append(results[i].name + i);
+                // $(".tickets").attr("href", results[i].url);
+            }
+
+
+        },
+        error: function (xhr, status, err) {
+            // This time, we do not end up here!
         }
-
-
-        $(".map-widget").attr("w-keyword", keyword);
-        $('body').append("<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyADTX9e9tTjKQGNM7GwtlGCfwGWGg2298U&libraries=visualization,places' async defer> </script>");
-        $('body').append("<script src='https://ticketmaster-api-staging.github.io/products-and-docs/widgets/map/1.0.0/lib/main-widget.js'> </script>");
-
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 });
