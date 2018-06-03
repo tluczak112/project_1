@@ -1,0 +1,75 @@
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body {
+    margin:0;
+    padding:0;
+    width:100%;
+    text-align: center;
+    background-size: cover;
+    height: 100vh;
+    display:table; 
+}
+
+.st0{fill:none;}
+.st1{fill:#fff;stroke:#FFFFFF;stroke-miterlimit:10;}
+
+.main{
+    background-image: url(http://www.s3forums.com/forum/attachments/galaxy-s3-graphics/11454d1399706454-share-your-wallpaper-27123-lagoon-night-1920x1080-beach-wallpaper.jpg) no-repeat 50% 50%; 
+}
+
+.main2{
+    background-image:url("../images/bg3.jpg");
+    transition: background-image 2s ease;
+}
+
+.wrapper {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+}
+
+path {
+    stroke: #fff;
+    fill:#fff;
+    stroke-dasharray: 2510;
+    opacity: 10;
+    animation: animate 3s cubic-bezier(0,0.23,1,.1);
+}
+
+.st0{fill:none;}
+.st1{fill:#fff;stroke:#FFFFFF;stroke-miterlimit:10;}
+
+
+
+@keyframes animate {
+    0% {
+        opacity:0;
+        fill: none;
+        stroke-dashoffset: 2510;
+    }
+
+    30% {
+        opacity: 10;
+        fill: none;
+        stroke-dashoffset: 2510;
+    }
+
+    90% {
+        fill:rgba(255,255,255,0);
+    }
+
+    100% {
+        opacity: 10;
+        fill: rgba(255,255,255,1);
+        stroke-dashoffset: 0;
+        
+    }
+
+}
+

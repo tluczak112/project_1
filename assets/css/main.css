@@ -1,0 +1,93 @@
+html{
+    font-size:16px;
+    background: url("http://www.s3forums.com/forum/attachments/galaxy-s3-graphics/11454d1399706454-share-your-wallpaper-27123-lagoon-night-1920x1080-beach-wallpaper.jpg"); 
+    height:100%;
+}
+
+
+body{
+    font-family: 'Noto Serif', serif;
+    color:#d1d1d1;
+    line-height: 200%;
+    background-repeat: repeat; 
+}   
+    
+nav .brand-logo{
+   font-size: 2.5rem;
+   font-family: 'Vidaloka', serif;
+}
+
+.logo{
+    height:100px;
+}
+
+.row .black{
+    padding-left:3rem;
+    padding-bottom: 1rem;
+}
+
+.artist-input{
+    color: white;
+}
+
+#genre a{
+    margin-bottom:0.5rem;
+    margin-right:1rem;
+}
+
+.card{
+    border: 1px solid #d1d1d1;
+}
+
+.card .card-content{
+    padding:10px;
+    position: relative;
+}
+
+.top-img{
+    height:80px;
+    position:absolute;
+    top:-30px;
+    left:20px;
+    transform: rotate(-90deg);
+}
+
+.card .card-action .row{
+    padding:0px;
+    margin:0px;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating){
+    color:orange;
+}
+
+.card .card-title{
+    font-size:28px;
+    font-family: 'Vidaloka', serif;
+    text-transform: uppercase;
+}
+
+.collection .collection-item.avatar{
+    min-height:60px;
+}
+
+.play{
+    color: red;
+}
+
+.play:hover{
+    cursor: pointer;
+}
+
+.card-action p{
+    display: block;
+    margin:1px;
+    border:1px solid gray;
+    padding:2px;
+    padding-right:10px;
+}
+
+.track:hover{
+    cursor: pointer;
+    border: 1px solid darkcyan;
+}
