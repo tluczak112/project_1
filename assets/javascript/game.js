@@ -110,13 +110,10 @@ $(document).ready(function() {
                                 $(".ticket-link").attr("href", results[i].url);
                                 // console.log(results[i].images);
                                 // console.log(results[i].images[1].url);
-                                $(".carousel-item").attr("src", results[i].images[1].url);
-                                $(".carousel-item").append(results[i].images[1].url);
+                                $(".background").attr("src", results[i].images[1].url);
+                                $(".background").append(results[i].images[1].url);
                                 ticketsDiv.show();
-                                $('.carousel.carousel-slider').carousel({
-                                    fullWidth: true,
-                                    indicators: true
-                                });
+                                $('.slider').slider({height:300});
                             }
                         },
                         error: function (xhr, status, err) {

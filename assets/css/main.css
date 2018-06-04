@@ -2,6 +2,8 @@ html{
     font-size:16px;
     background: url("http://www.s3forums.com/forum/attachments/galaxy-s3-graphics/11454d1399706454-share-your-wallpaper-27123-lagoon-night-1920x1080-beach-wallpaper.jpg"); 
     height:100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 
@@ -9,7 +11,7 @@ body{
     font-family: 'Noto Serif', serif;
     color:#d1d1d1;
     line-height: 200%;
-    background-repeat: repeat; 
+    /* background-repeat: repeat;  */
 }   
     
 nav .brand-logo{
@@ -105,13 +107,18 @@ nav .brand-logo{
     margin:0 auto;
 }
 
-.artist-tracks, .youtube-vdo, .artist-tickets{
+.artist-tracks, .youtube-vdo{
     height:545px;
 }
 
-/* .carousel{
-max-width:50%;
-} */
+.artist-tickets{
+    height:640px;
+}
+
+.googleMap{
+   margin: 0 auto 0 auto; 
+   padding-bottom:20px;
+}
 
 /* .embedly-card{
      max-height:340px; 
