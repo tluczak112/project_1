@@ -1,0 +1,125 @@
+html{
+    font-size:16px;
+    background: url("http://www.s3forums.com/forum/attachments/galaxy-s3-graphics/11454d1399706454-share-your-wallpaper-27123-lagoon-night-1920x1080-beach-wallpaper.jpg"); 
+    height:100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+body{
+    font-family: 'Noto Serif', serif;
+    color:#d1d1d1;
+    line-height: 200%;
+    /* background-repeat: repeat;  */
+}   
+    
+nav .brand-logo{
+   font-size: 2.5rem;
+   font-family: 'Vidaloka', serif;
+}
+
+.logo{
+    height:100px;
+}
+
+.row .black{
+    padding-left:3rem;
+    padding-bottom: 1rem;
+}
+
+.artist-input{
+    color: white;
+}
+
+#genre a{
+    margin-bottom:0.5rem;
+    margin-right:1rem;
+}
+
+.card{
+    border: 1px solid #d1d1d1;
+}
+
+.card .card-content{
+    padding:10px;
+    position: relative;
+}
+
+.top-img{
+    height:80px;
+    position:absolute;
+    top:-30px;
+    left:20px;
+    transform: rotate(-90deg);
+}
+
+.card .card-action .row{
+    padding:0px;
+    margin:0px;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating){
+    color:orange;
+}
+
+.card .card-title{
+    font-size:28px;
+    font-family: 'Vidaloka', serif;
+    text-transform: uppercase;
+}
+
+.collection .collection-item.avatar{
+    min-height:60px;
+}
+
+.play{
+    color: darkcyan;
+}
+
+.play:hover{
+    cursor: pointer;
+}
+
+.now-play{
+    color:red;
+}
+
+.card-action p{
+    display: block;
+    margin:1px;
+    /* border:1px solid gray; */
+    padding:2px;
+    padding-right:10px;
+} 
+
+.track:hover{
+    cursor: pointer;
+    border: 3px solid darkcyan;
+}
+
+.youtube-title{
+    text-transform: uppercase;
+    font-size:15px;
+    color:beige;
+    text-shadow: 2px 2px black;
+    width: 250px;
+    margin:0 auto;
+}
+
+.artist-tracks, .youtube-vdo{
+    height:545px;
+}
+
+.artist-tickets{
+    height:640px;
+}
+
+.googleMap{
+   margin: 0 auto 0 auto; 
+   padding-bottom:20px;
+}
+
+/* .embedly-card{
+     max-height:340px; 
+} */
