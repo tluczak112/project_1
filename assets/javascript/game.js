@@ -3,6 +3,10 @@ $(document).ready(function() {
     artistDetailDiv.hide();
     var trackDiv = $(".tracks-div");
     trackDiv.hide();
+    var artistTrackDiv = $("#artist-track");
+    var playDiv = $(".youtube-vdo");
+    playDiv.hide();
+    var nowplayDiv = $(".now-play");
 
    // generate top 10 tags
     function generateGenre(){
@@ -31,8 +35,9 @@ $(document).ready(function() {
         var apiKeyBandInTown = "codingbootcamp";
         var queryURLArtist  = "https://rest.bandsintown.com/artists/" + artist + "?app_id="+apiKeyBandInTown;
         console.log(queryURLArtist);
-        var artistTrackDiv = $("#artist-track");
         artistTrackDiv.empty();
+        playDiv.hide();
+        nowplayDiv.empty();
         //1st api call
         $.ajax({
           url: queryURLArtist,
@@ -76,19 +81,14 @@ $(document).ready(function() {
                         console.log("*"+trackArray[i].name);
                         var track = trackArray[i].name;
                         tracks.push(track);
-                        var artistTrackHtml = $("<p>").addClass("track left-align");
-                         artistTrackDiv.append(artistTrackHtml.html(track).append($("<i>")
-                         .addClass("material-icons right play").text("play_circle_outline")));
-                         trackDiv.show();
-                       
-                        // playVideo(track,artistName);
+                        getVideo(track,artistName);
                     }     
                 });//3rd api
             });//2nd api
         });//1st api
       }//end of function searchBandsInTown
 
-      function playVideo(track,artistName){
+      function getVideo(track,artistName){
         var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q="+track+" by "+artistName+"&type=video&key=AIzaSyDxxuZIfzfQ8B49df69ZPTapVglg6HJd5Q";
         console.log(queryURL);
         $.ajax({
@@ -98,12 +98,41 @@ $(document).ready(function() {
             console.log(response);
             var title = response.items[0].snippet.title;
             var vid = response.items[0].id.videoId;
-            var videoDiv = $("");
-            var link = $("<a>");
-            link.attr("href","https://www.youtube.com/watch?v="+vid+"?autoplay=1&cc_load_policy=1&loop=1");
-            videoDiv.append(link);
+            
+            var artistTrackHtml = $("<p>").addClass("track left-align");
+            artistTrackDiv.append(artistTrackHtml.html(track).append($("<i>")
+            .addClass("material-icons right play").html("play_circle_outline")));
+            artistTrackHtml.attr("data-artist",artistName);
+            artistTrackHtml.attr("data-title",track);
+            artistTrackHtml.attr("data-vid",vid);
+            artistTrackHtml.attr("data-youtubetitle",title);
+            trackDiv.show();         
         });
       }
+
+      //play video
+      $("#artist-track").on("click", ".track",function(event) {
+             var allIcons = $(".track").children();
+             allIcons.removeClass("now-play").addClass("play").html("play_circle_outline");;
+             nowplayDiv.empty();
+             var inputTrack = $(this).attr("data-title");
+             var artist = $(this).attr("data-artist");
+             var vid = $(this).attr("data-vid");
+             var youtubeTitle = $(this).attr("data-youtubetitle");
+             var embedlyCard = $("<blockquote class='embedly-card'>");
+             var videoDiv = $("<h4>");
+             var link = $("<a>");
+             link.attr("href","https://www.youtube.com/watch?v="+vid+"?autoplay=1&cc_load_policy=1&loop=1");
+             var hDiv = videoDiv.append(link);
+             var blackDiv = embedlyCard.append(hDiv);
+             var titleDiv =  $("<div>").addClass("youtube-title");
+             var scroll = $("<marquee behavior='scroll' direction='left'>").text(youtubeTitle);
+             titleDiv.append(scroll);
+             nowplayDiv.append(titleDiv, blackDiv);
+             playDiv.show();
+             var icon = $(this).children();
+             icon.removeClass("play").addClass("now-play").html("play_circle_filled");
+      });
       //lyric to be added
 
 

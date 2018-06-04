@@ -72,22 +72,44 @@ nav .brand-logo{
 }
 
 .play{
-    color: red;
+    color: darkcyan;
 }
 
 .play:hover{
     cursor: pointer;
 }
 
+.now-play{
+    color:red;
+}
+
 .card-action p{
     display: block;
     margin:1px;
-    border:1px solid gray;
+    /* border:1px solid gray; */
     padding:2px;
     padding-right:10px;
-}
+} 
 
 .track:hover{
     cursor: pointer;
-    border: 1px solid darkcyan;
+    border: 3px solid darkcyan;
 }
+
+.youtube-title{
+    text-transform: uppercase;
+    font-size:15px;
+    color:beige;
+    text-shadow: 2px 2px black;
+    width: 250px;
+    margin:0 auto;
+}
+
+.artist-tracks, .youtube-vdo{
+    height:545px;
+}
+
+
+/* .embedly-card{
+     max-height:340px; 
+} */
