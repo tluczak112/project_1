@@ -111,13 +111,27 @@ nav .brand-logo{
     height:545px;
 }
 
-.artist-tickets{
-    height:640px;
+.artist-tickets, .lyrics-div{
+    height:675px;
 }
 
 .googleMap{
    margin: 0 auto 0 auto; 
-   padding-bottom:20px;
+   padding-bottom:25px;
+}
+
+.song-title{
+    font-weight:bold;
+}
+
+.lyrics-title>h1{
+    font-size: 3.2rem;
+    line-height: 100%;
+    margin: -0.2rem 0 1.68rem 0;
+}
+.show-lyrics{
+    overflow-y: scroll;
+    height:500px;
 }
 
 /* .embedly-card{

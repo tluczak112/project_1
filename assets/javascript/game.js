@@ -7,9 +7,11 @@ $(document).ready(function() {
     var playDiv = $(".youtube-vdo");
     playDiv.hide();
     var nowplayDiv = $(".now-play");
-    var ticketsDiv = $(".tickets-div")
+    var ticketsDiv = $(".tickets-div");
     ticketsDiv.hide();
     var i = 0;
+    var lyricsDiv = $(".lyrics-div");
+    lyricsDiv.hide();
 
    // generate top 10 tags
     function generateGenre(){
@@ -170,6 +172,31 @@ $(document).ready(function() {
             var icon = $(this).children();
             icon.removeClass("play").addClass("now-play").html("play_circle_filled");
             $(this).addClass("red-text");
+
+           $(".show-lyrics").empty();
+            var apiLyrics = "3ovTtzy3bh4BgFmV33tZ1xoRY5DbXgj7azJKfxROe8b6kbMhc8tIWBPnP5dHDypJ";
+            var queryUrlLyrics = "https://orion.apiseeds.com/api/music/lyric/" + artist + "/" + inputTrack + "?apikey=" + apiLyrics;
+
+           $.ajax({
+            url: queryUrlLyrics,
+            method: "GET"
+        }).then(function (response) {
+
+            var lyric = response.result.track.text.replace(/(?:\r\n|\r|\n)/g, '<br>');
+            var inputTrackHtml = $("<h1>").text( artist + ":" + inputTrack);
+            $(".lyrics-title").append(inputTrackHtml);
+            $(".show-lyrics").append(JSON.stringify(lyric)); 
+
+            lyricsDiv.show();
+
+            }).fail(function () {
+                console.log("error");
+                var inputTrackHtml = $("<h1>").text("Lyric: " + inputTrack);
+                $(".show-lyrics").append(inputTrackHtml, "Lyric Not Found");
+                lyricsDiv.show();
+            });
+
+
       });
 
       
