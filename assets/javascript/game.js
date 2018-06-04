@@ -9,6 +9,7 @@ $(document).ready(function() {
     var nowplayDiv = $(".now-play");
     var ticketsDiv = $(".tickets-div")
     ticketsDiv.hide();
+    var i = 0;
 
    // generate top 10 tags
     function generateGenre(){
@@ -34,6 +35,7 @@ $(document).ready(function() {
     generateGenre();
 
     function searchBandsInTown(artist) {
+        i = 0;
         var apiKeyBandInTown = "codingbootcamp";
         var queryURLArtist  = "https://rest.bandsintown.com/artists/" + artist + "?app_id="+apiKeyBandInTown;
         console.log(queryURLArtist);
@@ -133,43 +135,57 @@ $(document).ready(function() {
           method: "GET"
         }).then(function(response) {
             console.log(response);
-            var title = response.items[0].snippet.title;
+            var youtubeTitle = response.items[0].snippet.title;
             var vid = response.items[0].id.videoId;
-            
+            var icon = $("<i>").addClass("material-icons right play").html("play_circle_outline");
             var artistTrackHtml = $("<p>").addClass("track left-align");
-            artistTrackDiv.append(artistTrackHtml.html(track).append($("<i>")
-            .addClass("material-icons right play").html("play_circle_outline")));
+            artistTrackDiv.append(artistTrackHtml.html(track).append(icon));
             artistTrackHtml.attr("data-artist",artistName);
             artistTrackHtml.attr("data-title",track);
             artistTrackHtml.attr("data-vid",vid);
-            artistTrackHtml.attr("data-youtubetitle",title);
+            artistTrackHtml.attr("data-youtubetitle", youtubeTitle);
             trackDiv.show();         
+            //initial video
+            if(i===0){
+                showYoutubeVideo(vid, youtubeTitle);
+                artistTrackHtml.addClass("red-text");
+                icon.removeClass("play").addClass("now-play").html("play_circle_filled");
+            }
+            i++;
         });
       }
 
-      //play video
-      $("#artist-track").on("click", ".track",function(event) {
-             var allIcons = $(".track").children();
-             allIcons.removeClass("now-play").addClass("play").html("play_circle_outline");;
-             nowplayDiv.empty();
-             var inputTrack = $(this).attr("data-title");
-             var artist = $(this).attr("data-artist");
-             var vid = $(this).attr("data-vid");
-             var youtubeTitle = $(this).attr("data-youtubetitle");
-             var embedlyCard = $("<blockquote class='embedly-card'>");
-             var videoDiv = $("<h4>");
-             var link = $("<a>");
-             link.attr("href","https://www.youtube.com/watch?v="+vid+"?autoplay=1&cc_load_policy=1&loop=1");
-             var hDiv = videoDiv.append(link);
-             var blackDiv = embedlyCard.append(hDiv);
-             var titleDiv =  $("<div>").addClass("youtube-title");
-             var scroll = $("<marquee behavior='scroll' direction='left'>").text(youtubeTitle);
-             titleDiv.append(scroll);
-             nowplayDiv.append(titleDiv, blackDiv);
-             playDiv.show();
-             var icon = $(this).children();
-             icon.removeClass("play").addClass("now-play").html("play_circle_filled");
+
+       //play video
+       $("#artist-track").on("click", ".track",function(event) {
+            nowplayDiv.empty();
+            $(".track").removeClass("red-text");
+            var allIcons = $(".track").children();
+            allIcons.removeClass("now-play").addClass("play").html("play_circle_outline");
+            var inputTrack = $(this).attr("data-title");
+            var artist = $(this).attr("data-artist");
+            var vid = $(this).attr("data-vid");
+            var youtubeTitle = $(this).attr("data-youtubetitle");
+            showYoutubeVideo(vid, youtubeTitle);
+            var icon = $(this).children();
+            icon.removeClass("play").addClass("now-play").html("play_circle_filled");
+            $(this).addClass("red-text");
       });
+
+      
+      function showYoutubeVideo(vid, youtubeTitle){
+        var embedlyCard = $("<blockquote class='embedly-card'>");
+        var videoDiv = $("<h4>");
+        var link = $("<a>").attr("href","https://www.youtube.com/watch?v="+vid+"?autoplay=1&cc_load_policy=1&loop=1");
+        var hDiv = videoDiv.append(link);
+        var embedlyDiv = embedlyCard.append(hDiv);
+        var titleDiv =  $("<div>").addClass("youtube-title");
+        var scroll = $("<marquee behavior='scroll' direction='left'>").text(youtubeTitle);
+        titleDiv.append(scroll);
+        nowplayDiv.append(titleDiv, embedlyDiv);
+        playDiv.show();
+      }
+
       //lyric to be added
 
 
