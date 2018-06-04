@@ -1,9 +1,18 @@
-var timerId = setTimeout(myTimer, 4000);
+// $(".main-page").hide();
+// var timerId = setTimeout(myTimer, 4000);
 
 function myTimer(){
-    console.log(10);
     $("body").removeClass("main");
     $("body").addClass("main2");
-    $("g").remove();
-    $("svg").remove();
+    $(".wrapper").remove();
+     $(".main-page").show();
 }
+
+//materialize funtions
+$(document).ready(function(){
+    $('.materialboxed').materialbox();
+    $('.tooltipped').tooltip();
+  });
+
+
+
