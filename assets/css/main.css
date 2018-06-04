@@ -6,6 +6,11 @@ html{
     background-attachment: fixed;
 }
 
+.mainLogo{
+    width:40%;
+    margin: 0 auto;
+}
+
 
 body{
     font-family: 'Noto Serif', serif;
@@ -57,6 +62,10 @@ nav .brand-logo{
 .card .card-action .row{
     padding:0px;
     margin:0px;
+}
+
+.container {
+    width: 90%;
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating){
