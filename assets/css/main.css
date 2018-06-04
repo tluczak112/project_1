@@ -64,6 +64,10 @@ nav .brand-logo{
     margin:0px;
 }
 
+.container {
+    width: 90%;
+}
+
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating){
     color:orange;
 }
