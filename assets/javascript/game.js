@@ -7,6 +7,8 @@ $(document).ready(function() {
     var playDiv = $(".youtube-vdo");
     playDiv.hide();
     var nowplayDiv = $(".now-play");
+    var ticketsDiv = $(".tickets-div")
+    ticketsDiv.hide();
 
    // generate top 10 tags
     function generateGenre(){
@@ -82,7 +84,45 @@ $(document).ready(function() {
                         var track = trackArray[i].name;
                         tracks.push(track);
                         getVideo(track,artistName);
-                    }     
+                    }
+
+                    //4th api call
+                    var apiTickets = "hkwzBibHMfcvN0cppcq6tQrtKdHlCp44";
+                    var city = "Los Angeles";
+                    // var keyword = "korn";
+                    var querlyUrlTicketmaster = "https://app.ticketmaster.com/discovery/v2/attractions.json?city=" + city + "&keyword=" + artistName + "&classificationName=music&dmaId=324&apikey=" + apiTickets;
+
+                    $.ajax({
+                        type: "GET",
+                        url: querlyUrlTicketmaster,
+                        async: true,
+                        dataType: "json",
+                        success: function (response) {
+                            var results = response._embedded.attractions;
+                            // console.log(response._embedded.attractions)
+                            for (i = 0; i < results.length; i++) {
+                                // console.log(results[i]);
+                                // console.log(results[i].name);
+                                var slide = ".slide" + i;
+                                $(slide).append(results[i].name + i);
+
+                                console.log(results[i].url);
+                                $(".ticket-link").attr("href", results[i].url);
+                                // console.log(results[i].images);
+                                // console.log(results[i].images[1].url);
+                                $(".carousel-item").attr("src", results[i].images[1].url);
+                                $(".carousel-item").append(results[i].images[1].url);
+                                ticketsDiv.show();
+                                $('.carousel.carousel-slider').carousel({
+                                    fullWidth: true,
+                                    indicators: true
+                                });
+                            }
+                        },
+                        error: function (xhr, status, err) {
+
+                        }
+                    });   //4th api call  
                 });//3rd api
             });//2nd api
         });//1st api

@@ -105,10 +105,13 @@ nav .brand-logo{
     margin:0 auto;
 }
 
-.artist-tracks, .youtube-vdo{
+.artist-tracks, .youtube-vdo, .artist-tickets{
     height:545px;
 }
 
+/* .carousel{
+max-width:50%;
+} */
 
 /* .embedly-card{
      max-height:340px; 
