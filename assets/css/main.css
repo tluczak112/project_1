@@ -6,6 +6,11 @@ html{
     background-attachment: fixed;
 }
 
+.mainLogo{
+    width:40%;
+    margin: 0 auto;
+}
+
 
 body{
     font-family: 'Noto Serif', serif;
