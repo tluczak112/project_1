@@ -133,7 +133,7 @@ nav .brand-logo{
     margin: -0.2rem 0 1.68rem 0;
 }
 .show-lyrics{
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     height:400px;
 }
 

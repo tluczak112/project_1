@@ -108,19 +108,50 @@ $(document).ready(function () {
                         success: function (response) {
                             var results = response._embedded.attractions;
                             // console.log(response._embedded.attractions)
+                            $("#caro").html("");
                             for (i = 0; i < results.length; i++) {
                                 // console.log(results[i]);
                                 // console.log(results[i].name);
 
-                                var slide = ".slide" + i;
-                                $(slide).html(results[i].name + i);
+                                // <li>
+                                //     <img class="background" src="...">
+                                //         <!-- concert image -->
+                                //         <div class="caption center-align">
+                                //             <h3 class="slide1"></h3>
+                                //             <h5 class="light grey-text text-lighten-3">
+                                //                 <a class="ticket-link" href="...">Buy Tickets</a></h5>
+                                //         </div>
+                                //     </li>
 
-                                console.log(results[i].url);
-                                $(".ticket-link").attr("href", results[i].url);
-                                // console.log(results[i].images);
-                                // console.log(results[i].images[1].url);
-                                $(".background").attr("src", results[i].images[1].url);
-                                $(".background").html(results[i].images[1].url);
+
+                                var list = $("<li>");
+                                    var img = $("<img>");
+                                    img.addClass("background");
+                                    img.attr("src", results[i].images[1].url)
+                        
+                                list.append(img);
+
+                                var div = $("<div>");
+                                div.addClass("caption center-align")
+                                
+                                    var h3 = $("<h3>");
+                                    h3.html(results[i].name);
+                                    div.append(h3);
+                                    var h5 = $("<h5>");
+                                    h5.addClass("light grey-text text-lighten-3");
+                                
+                                        var a = $("<a>");
+                                        a.addClass("ticket-link");
+                                        a.attr("href", results[i].url);
+                                        a.text("Buy Tickets");
+                                        h5.append(a);
+                                
+                                    div.append(h5);
+
+                                list.append(div);
+
+                                $("#caro").append(list)
+
                                 ticketsDiv.show();
                                 $('.slider').slider({ height: 300 });
                             }
@@ -203,6 +234,7 @@ $(document).ready(function () {
         }).fail(function () {
             console.log("error");
             var inputTrackHtml = $("<h1>").text("Lyric: " + inputTrack);
+            $(".lyrics-title").html(inputTrackHtml);
             $(".show-lyrics").html(inputTrackHtml, "Lyric Not Found");
             lyricsDiv.show();
         });
