@@ -44,6 +44,8 @@ $(document).ready(function() {
         artistTrackDiv.empty();
         playDiv.hide();
         nowplayDiv.empty();
+     
+        
         //1st api call
         $.ajax({
           url: queryURLArtist,
@@ -88,6 +90,8 @@ $(document).ready(function() {
                         var track = trackArray[i].name;
                         tracks.push(track);
                         getVideo(track,artistName);
+
+            
                     }
 
                     //4th api call
@@ -107,15 +111,16 @@ $(document).ready(function() {
                             for (i = 0; i < results.length; i++) {
                                 // console.log(results[i]);
                                 // console.log(results[i].name);
+                                
                                 var slide = ".slide" + i;
-                                $(slide).append(results[i].name + i);
+                                $(slide).html(results[i].name + i);
 
                                 console.log(results[i].url);
                                 $(".ticket-link").attr("href", results[i].url);
                                 // console.log(results[i].images);
                                 // console.log(results[i].images[1].url);
                                 $(".background").attr("src", results[i].images[1].url);
-                                $(".background").append(results[i].images[1].url);
+                                $(".background").html(results[i].images[1].url);
                                 ticketsDiv.show();
                                 $('.slider').slider({height:300});
                             }
@@ -150,8 +155,10 @@ $(document).ready(function() {
             //initial video
             if(i===0){
                 showYoutubeVideo(vid, youtubeTitle);
+                getLyrics(artistName, track);
                 artistTrackHtml.addClass("red-text");
                 icon.removeClass("play").addClass("now-play").html("play_circle_filled");
+                lyricsDiv.hide();
             }
             i++;
         });
@@ -172,33 +179,35 @@ $(document).ready(function() {
             var icon = $(this).children();
             icon.removeClass("play").addClass("now-play").html("play_circle_filled");
             $(this).addClass("red-text");
+            
+            getLyrics(artist, inputTrack);
+           
 
-           $(".show-lyrics").empty();
-            var apiLyrics = "3ovTtzy3bh4BgFmV33tZ1xoRY5DbXgj7azJKfxROe8b6kbMhc8tIWBPnP5dHDypJ";
-            var queryUrlLyrics = "https://orion.apiseeds.com/api/music/lyric/" + artist + "/" + inputTrack + "?apikey=" + apiLyrics;
-
-           $.ajax({
+      });
+    function getLyrics(artist, inputTrack){
+        var apiLyrics = "3ovTtzy3bh4BgFmV33tZ1xoRY5DbXgj7azJKfxROe8b6kbMhc8tIWBPnP5dHDypJ";
+        var queryUrlLyrics = "https://orion.apiseeds.com/api/music/lyric/" + artist + "/" + inputTrack + "?apikey=" + apiLyrics;
+      
+        $.ajax({
             url: queryUrlLyrics,
             method: "GET"
         }).then(function (response) {
 
             var lyric = response.result.track.text.replace(/(?:\r\n|\r|\n)/g, '<br>');
-            var inputTrackHtml = $("<h1>").text( artist + ":" + inputTrack);
-            $(".lyrics-title").append(inputTrackHtml);
-            $(".show-lyrics").append(JSON.stringify(lyric)); 
+            var inputTrackHtml = $("<h1>").text(artist + ":" + inputTrack);
+            $(".lyrics-title").html(inputTrackHtml);
+            $(".show-lyrics").html(JSON.stringify(lyric));
 
             lyricsDiv.show();
 
-            }).fail(function () {
-                console.log("error");
-                var inputTrackHtml = $("<h1>").text("Lyric: " + inputTrack);
-                $(".show-lyrics").append(inputTrackHtml, "Lyric Not Found");
-                lyricsDiv.show();
-            });
+        }).fail(function () {
+            console.log("error");
+            var inputTrackHtml = $("<h1>").text("Lyric: " + inputTrack);
+            $(".show-lyrics").html(inputTrackHtml, "Lyric Not Found");
+            lyricsDiv.show();
+        });
 
-
-      });
-
+    }
       
       function showYoutubeVideo(vid, youtubeTitle){
         var embedlyCard = $("<blockquote class='embedly-card'>");
@@ -211,6 +220,7 @@ $(document).ready(function() {
         titleDiv.append(scroll);
         nowplayDiv.append(titleDiv, embedlyDiv);
         playDiv.show();
+    
       }
 
       //lyric to be added
