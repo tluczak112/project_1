@@ -110,20 +110,7 @@ $(document).ready(function () {
                             // console.log(response._embedded.attractions)
                             $("#caro").html("");
                             for (i = 0; i < results.length; i++) {
-                                // console.log(results[i]);
-                                // console.log(results[i].name);
-
-                                // <li>
-                                //     <img class="background" src="...">
-                                //         <!-- concert image -->
-                                //         <div class="caption center-align">
-                                //             <h3 class="slide1"></h3>
-                                //             <h5 class="light grey-text text-lighten-3">
-                                //                 <a class="ticket-link" href="...">Buy Tickets</a></h5>
-                                //         </div>
-                                //     </li>
-
-
+       
                                 var list = $("<li>");
                                     var img = $("<img>");
                                     img.addClass("background");
@@ -215,6 +202,9 @@ $(document).ready(function () {
 
 
     });
+
+    //lyrics function
+    
     function getLyrics(artist, inputTrack) {
         var apiLyrics = "3ovTtzy3bh4BgFmV33tZ1xoRY5DbXgj7azJKfxROe8b6kbMhc8tIWBPnP5dHDypJ";
         var queryUrlLyrics = "https://orion.apiseeds.com/api/music/lyric/" + artist + "/" + inputTrack + "?apikey=" + apiLyrics;
@@ -254,9 +244,6 @@ $(document).ready(function () {
         playDiv.show();
 
     }
-
-    //lyric to be added
-
 
 
     $("#select-artist").on("click", function (event) {
