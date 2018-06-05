@@ -5,7 +5,7 @@
 <p>MT&L is a powerful web based music app with multiple capabilities. It opens up with a beautiful welcome page that brings the user to a search form. Input your favorite artist into the search form and everything you have ever wanted is right at your fingertips! The artists information, the artists top trending tracks, a map of the nearby events & the artists upcoming events with links to purchase tickets. You can even watch their music videos directly from our app along with the lyrics scrolling by!</p>
 </br>
 <p>Furthermore, you can also search the top trending tracks by genre with the convenientaly provided options on the search form and play their music videos directly from the site as well. Once you have decided which artist you would like to easily access again, you can save them to our favorites section! Click the pulsating heart at the top right corner of the artists information and find your favorites at the top right of the page.</p>
-</br>
+
 <h3>Deployment</h3>
 Check out our live Website: https://tluczak112.github.io/project_1/
 </br>
