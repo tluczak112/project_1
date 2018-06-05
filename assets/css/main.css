@@ -13,17 +13,14 @@ body{
     line-height: 200%;
     /* background-repeat: repeat;  */
 }   
-.mainLogo{
-    width:40%;
-    margin: 0 auto;
-}    
+
 nav .brand-logo{
    font-size: 2.5rem;
    font-family: 'Vidaloka', serif;
 }
 
 .logo{
-    height:100px;
+    height:130px;
 }
 
 .row .black{
