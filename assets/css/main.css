@@ -124,7 +124,7 @@ nav .brand-logo{
     font-weight:bold;
 }
 
-.lyrics-title>h1{
+.lyrics-title>h1, .show-lyrics h1{
     font-size:28px;
     line-height: 100%;
     margin: -0.2rem 0 1.68rem 0;

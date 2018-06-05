@@ -18,6 +18,8 @@ $(document).ready(function () {
     bottomDiv.hide();
     var favoriteDiv = $(".favorite-div");
     favoriteDiv.hide();
+    var errorDiv = $(".error-div");
+    errorDiv.hide();
     var apiKeyLastFm ="c5170f76db40cf305fa1f7989ee80687";
     // local Storage
     var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -56,6 +58,7 @@ $(document).ready(function () {
         genreDiv.hide();
         bottomDiv.empty();
         favoriteDiv.hide();
+        errorDiv.hide();
         clearSelectedGenre();
 
         //1st api call
@@ -169,6 +172,13 @@ $(document).ready(function () {
                     });   //4th api call  
                 });//3rd api
             });//2nd api
+        }).fail(function(){
+            console.log("error");
+            artistDetailDiv.hide();
+            trackDiv.hide();
+            playDiv.hide();
+            ticketsDiv.hide();
+            errorDiv.show();
         });//1st api
     }//end of function searchBandsInTown
 
@@ -478,6 +488,7 @@ $(document).ready(function () {
         ticketsDiv.hide();
         bottomDiv.hide();
         favoriteDiv.hide();
+        errorDiv.hide();
     }
 
 });
