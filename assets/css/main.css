@@ -120,6 +120,52 @@ nav .brand-logo{
    padding-bottom:20px;
 }
 
-/* .embedly-card{
-     max-height:340px; 
-} */
+.collection .collection-item.avatar:not(.circle-clipper)>.circle, .collection .collection-item.avatar :not(.circle-clipper)>.circle{
+    width:63px;
+    height:63px;
+}
+
+.artist-thumbnail{
+    border:2px solid grey;
+}
+
+.bottom-video {
+    position: fixed;
+    right: 40px;
+    margin-left:20px;
+    bottom: 0;
+    width: 30%;
+    color: white;
+    text-align: center;
+    z-index: 1;
+ }
+.container{
+    width: 90%;
+}
+ .blockquote{
+     position: relative;
+ }
+
+ .close{
+     position: absolute;
+     top:25px;
+     right:-10px;
+     font-size: 28px;
+ }
+
+ .close:hover,.play-track:hover,.artist-redirect:hover{
+     cursor: pointer;
+ }
+
+ .artist-redirect a, .track-title{
+     margin-left:70px;
+ }
+ .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating){
+     color:#ffab91;
+ }
+ @media screen and (max-width: 600px) {
+   .bottom-video{
+       width:80%;
+       margin-left:0px;
+   }
+ }

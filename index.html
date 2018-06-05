@@ -16,6 +16,8 @@
     <link href="https://fonts.googleapis.com/css?family=Vidaloka" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
 </head>
 
 <body class="main">
@@ -139,7 +141,7 @@
          </div>              
    
         <div class="container">
-
+            <!-- artist details -->
             <div class="row artist-detail-div">
                     <div class="col m12">
                         <div class="card grey darken-4 artist-details z-depth-5">
@@ -163,6 +165,7 @@
                     </div>
                 </div>
 
+                <!-- tracks -->
                 <div class="row tracks-div">
                         <div class="col m6 s12">
                             <div class="card grey darken-4 artist-tracks z-depth-5">
@@ -189,7 +192,7 @@
                 </div>
                 
 
-                <!-- ticketmaster API code should go here -->
+            <!-- ticketmaster API code should go here -->
 
             <div class="row tickets-div">
                 <div class="col m6 s12">
@@ -236,28 +239,37 @@
                                     </ul>
                                 </div>
                             </div>
-                </div>
+                   </div>
             </div>
-        </div>
-            <!-- <div class="col m6 s12">
-                <div class="card grey darken-4 lyrics-div z-depth-5">
+
+            <!-- genre -->
+            <div class="row genre-div">
+              <div class="col s12 m12 l8 offset-l2">
+                <div class="card grey darken-4 z-depth-5">
                     <div class="card-content white-text">
-                        <span class="card-title cyan-text text-darken-2" class="play-title">Lyrics</span>
+                        <span class="card-title cyan-text text-darken-2" id="genre-title">Top Tracks By Genre: </span>
                         <img src="assets/images/top-pic-vdo.png" class="top-img">
-  
+                    </div>
+                    <div class="card-action">
+                            <ul class="collection" id="genre-track">
+                               
+                            </ul>
+                    </div>
                 </div>
             </div>
-        </div> -->
+           
+    <!-- end of container -->
+   </div>
 
+   <div class="bottom-video">
+        <blockquote class="embedly-card">
+                <h4><a href="https://www.youtube.com/watch?v=UKp2CrfmVfw">Documentation</a></h4>
+        </blockquote>
+        <i class="far fa-times-circle close"></i>
+   </div>
 
-
-
-                
-               
-            <!-- end of container -->
-            </div>
-        <!-- end of main page -->
-        </div>
+<!-- end of main page -->
+</div>
     
 
      <!-- jquery -->
