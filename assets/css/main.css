@@ -125,7 +125,7 @@ nav .brand-logo{
 }
 
 .lyrics-title>h1{
-    font-size: 3.2rem;
+    font-size:28px;
     line-height: 100%;
     margin: -0.2rem 0 1.68rem 0;
 }
@@ -231,9 +231,10 @@ nav .brand-logo{
     max-height: 400px;
 }
 
-.lyrics-title h1,.show-lyrics h1{
-    font-size:28px;
-}
+.show-lyrics {
+    text-align:center;
+} 
+
  @media screen and (max-width: 600px) {
    .bottom-video{
        width:80%;

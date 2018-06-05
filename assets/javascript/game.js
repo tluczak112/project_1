@@ -235,7 +235,7 @@ $(document).ready(function () {
         }).then(function (response) {
 
             var lyric = response.result.track.text.replace(/(?:\r\n|\r|\n)/g, '<br>');
-            var inputTrackHtml = $("<h1>").text(artist + ":" + inputTrack);
+            var inputTrackHtml = $("<h1>").text(artist + " : " + inputTrack);
             $(".lyrics-title").html(inputTrackHtml);
             $(".show-lyrics").html(JSON.stringify(lyric));
 
