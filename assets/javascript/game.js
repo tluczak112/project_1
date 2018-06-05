@@ -222,17 +222,17 @@ $(document).ready(function() {
             var vid = response.items[0].id.videoId;
             var thumbnail = response.items[0].snippet.thumbnails.high.url;
             console.log(youtubeTitle, thumbnail, vid);
-            var listDiv = $("<li>").addClass("collection-item avatar grey darken-4 left-align");
+            var listDiv = $("<li>").addClass("collection-item avatar grey darken-4 left-align list-div");
             var thumbnailImage = $("<img>").attr("src",thumbnail);
             thumbnailImage.addClass("circle artist-thumbnail responsive-img");
             thumbnailImage.attr("data-caption",artistName);
             var songTitle = $("<span>").addClass("title track-title");
             songTitle.html(track);
             var artist = $("<p>").addClass("name");
-            var artistLink = $("<a>").html(artistName);
+            var artistLink = $("<a>").html(artistName).addClass("artist-icon");
+            artistLink.attr("data-name", artistName);
             artist.append(artistLink);
             artist.addClass("artist-redirect");
-            artist.attr("data-name", artistName);
             var iconContainer = $("<a>").addClass("secondary-content");
             // var favIcon = $("<i>").addClass("material-icons cyan-text text-darken-2 fav").text("grade");
             var playIcon = $("<i>").addClass("material-icons cyan-text text-darken-2 play-track").text("play_circle_outline");
@@ -275,7 +275,7 @@ $(document).ready(function() {
       $(".bottom-video").on("click", ".close", function(event) {
            $(".play-track").removeClass("red-text").addClass("cyan-text");
            $(".play-track").html("play_circle_outline");
-           $(".track-title").css({"font-weight":"normal","font-style":"normal"});
+           $(".track-title").removeClass("red-text");
            $(".bottom-video").hide();
       });
       
@@ -283,11 +283,11 @@ $(document).ready(function() {
       //play top tracks
       $("#genre-track").on("click", ".play-track", function(event) {
             $(".play-track").removeClass("red-text").addClass("cyan-text");
-            $(".track-title").css({"font-weight":"normal","font-style":"normal"});
+            $(".track-title").removeClass("red-text");
             $(".play-track").html("play_circle_outline");
             $(this).html("play_circle_filled");
             var title = $(this).parent().prev().prev();
-            title.css({"font-weight":"bold","font-style":"italic"});
+            title.addClass("red-text");
             bottomDiv.empty();
             bottomDiv.show();
             $(this).removeClass("cyan-text").addClass("red-text");
@@ -297,7 +297,7 @@ $(document).ready(function() {
             bottomDiv.append(embedlyDiv,closeSymbmol);
       });
 
-    $("#genre-track").on("click", ".artist-redirect", function(event) {
+    $("#genre-track").on("click", ".artist-icon", function(event) {
        var artist = $(this).attr("data-name");
        console.log(artist);
        searchBandsInTown(artist);
