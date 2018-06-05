@@ -17,6 +17,9 @@
     <link href="https://fonts.googleapis.com/css?family=Vidaloka" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet"> 
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
 
 <body class="main">
@@ -114,10 +117,15 @@
     <!-- main page css -->
     <div class="main-page">
         <nav class="logo transparent">
-            <div class="nav-wrapper">
-                <img class="logo" src="assets/images/logo.png" alt="logo"></img>
-            </div>
-        </nav>
+                <div class="nav-wrapper">
+                <a href="index.html" class="brand-logo center"><img class="logo" src="assets/images/logo.png" alt="logo"></img></a>
+                    <ul id="nav-mobile" class="right">
+                            <li>
+                                <a class="fav-link"><i class="fas fa-heart"></i> MY FAVOURITE ARTISTS</a>
+                            </li>
+                    </ul>
+                </div>
+           </nav>
         
         
         <div class="row search-bar">
@@ -138,58 +146,60 @@
                     <!-- populate top 10 genres from last.fm -->
                     <div class="col m12" id="genre"></div>
             </form>
-            </div>
+        </div>
 
             <div class="container">
 
-                <div class="row artist-detail-div">
-                    <div class="col m12">
-                        <div class="card grey darken-4 artist-details z-depth-5">
-                            <div class="card-content white-text" id="artist-title">
-                                <span class="card-title cyan-text text-darken-2" id="artist-name"></span>
-                                <a class="btn-floating btn tooltipped
-                                    pulse halfway-fab waves-effect waves-light deep-orange lighten-3" data-tooltip='Add to favourite'
-                                    data-position="top">
-                                    <i class="material-icons">favorite</i>
-                                </a>
-                            </div>
-                            <div class="card-action">
-                                <div class="row">
-                                    <div class="col m5 l3 s12">
-                                        <img class="materialboxed circle responsive-img center-align" id="artist-image">
+                  <!-- artist details -->
+                    <div class="row artist-detail-div">
+                        <div class="col m12">
+                            <div class="card grey darken-4 artist-details z-depth-5">
+                                <div class="card-content white-text" id="artist-title">
+                                    <span class="card-title cyan-text text-darken-2" id="artist-name" ></span>
+                                    <a class="btn-floating btn tooltipped
+                                        halfway-fab waves-effect waves-light favt" data-tooltip='Add to favourite' 
+                                        data-position="top">
+                                        <i class="material-icons favorite-icon">favorite</i>
+                                    </a>
+                                </div>
+                                <div class="card-action">
+                                    <div class="row">
+                                        <div class="col m5 l3 s12">
+                                                <img class="materialboxed circle responsive-img center-align" id="artist-image">
+                                        </div>
+                                        <div class="col m7 l9 s12" id="artist-bio"></div>
                                     </div>
-                                    <div class="col m7 l9 s12" id="artist-bio"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row tracks-div">
-                    <div class="col m6 s12">
-                        <div class="card grey darken-4 artist-tracks z-depth-5">
-                            <div class="card-content white-text">
-                                <span class="card-title cyan-text text-darken-2">Top Tracks</span>
-                                <img src="assets/images/top-pic-vdo.png" class="top-img">
+                    <!-- tracks -->
+                    <div class="row tracks-div">
+                            <div class="col m6 s12">
+                                <div class="card grey darken-4 artist-tracks z-depth-5">
+                                    <div class="card-content white-text">
+                                        <span class="card-title cyan-text text-darken-2">Top Tracks</span>
+                                        <img src="assets/images/top-pic-vdo.png" class="top-img">
+                                    </div>
+                                    <div class="card-action" id="artist-track">
+                                        
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-action" id="artist-track">
-
+                            <div class="col m6 s12">
+                                    <div class="card grey darken-4 youtube-vdo z-depth-5">
+                                        <div class="card-content white-text">
+                                            <span class="card-title cyan-text text-darken-2" class="play-title">Now Playing</span>
+                                            <img src="assets/images/top-pic-vdo.png" class="top-img">
+                                        </div>
+                                        <div class="card-action now-play">
+                                            
+                                        </div>
+                                    </div>
                             </div>
-                        </div>
                     </div>
-                    <div class="col m6 s12">
-                        <div class="card grey darken-4 youtube-vdo z-depth-5">
-                            <div class="card-content white-text">
-                                <span class="card-title cyan-text text-darken-2" class="play-title">Now Playing</span>
-                                <img src="assets/images/top-pic-vdo.png" class="top-img">
-                            </div>
-                            <div class="card-action now-play">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            
 
                 <!-- ticketmaster API code should go here -->
 
@@ -241,15 +251,50 @@
                         </div>
                     </div>
                 </div>
+
+               <!-- genre -->
+            <div class="row genre-div">
+                    <div class="col s12 m12 l8 offset-l2">
+                      <div class="card grey darken-4 z-depth-5">
+                          <div class="card-content white-text">
+                              <span class="card-title cyan-text text-darken-2" id="genre-title">Top Tracks By Genre: </span>
+                              <img src="assets/images/top-pic-vdo.png" class="top-img">
+                          </div>
+                          <div class="card-action">
+                                  <ul class="collection" id="genre-track"></ul>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+               
+                  <!-- favorites -->
+                  <div class="row favorite-div">
+                      <div class="col s12">
+                          <div class="card grey darken-4 user-favorites z-depth-5">
+                              <div class="card-content white-text">
+                                  <span class="card-title cyan-text text-darken-2">My Favorite Artists</span>
+                                  <img src="assets/images/fav.png" class="fav-img">
+                              </div>
+                              <div class="card-action">
+                                  <div class="row" id="list-favorites">
+                                      
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
                 <!-- end of container -->
             </div>
 
-
-
-
-
-
-
+            <!-- youtube side video -->
+            <div class="bottom-video">
+                <blockquote class="embedly-card">
+                        <h4><a href="https://www.youtube.com/watch?v=UKp2CrfmVfw">Documentation</a></h4>
+                </blockquote>
+                <i class="far fa-times-circle close"></i>
+            </div>
+            
             <!-- end of main page -->
         </div>
 
