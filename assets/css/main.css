@@ -54,6 +54,14 @@ nav .brand-logo{
     transform: rotate(-90deg);
 }
 
+.fav-img{
+    height:80px;
+    position:absolute;
+    top:-30px;
+    left:20px;
+    transform: rotate(-30deg);
+}
+
 .card .card-action .row{
     padding:0px;
     margin:0px;
@@ -84,7 +92,10 @@ nav .brand-logo{
 .now-play{
     color:red;
 }
-
+.embedly-card{
+    max-height: 400px;
+    /* max-height: 400px; */
+}
 .card-action p{
     display: block;
     margin:1px;
@@ -158,14 +169,53 @@ nav .brand-logo{
  }
 
  .artist-redirect a, .track-title{
-     margin-left:70px;
+     margin-left:20px;
  }
+
+ /* overwritten */
  .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating){
      color:#ffab91;
  }
+
+ .fav-link{
+     padding:0 50px;
+ }
+
+ .fav-link .fa-heart{
+     color:red;
+ }
+.fav-artist-name{
+    font-size:15px;
+}
+ 
+.fav-artist{
+    margin-bottom:15px;
+}
+
+.fav-artist-img:hover{
+    cursor: pointer;
+    border: 2px ridge#ffd8a6;
+}
+
+.fav-artist-name{
+    text-transform: uppercase;
+    color:#ffab91;
+}
+
+.fav-artist-name:hover{
+    color: #ffd8a6;
+    cursor: pointer;
+}
+
+.message{
+    font-size:20px;
+}
+
  @media screen and (max-width: 600px) {
    .bottom-video{
        width:80%;
        margin-left:0px;
    }
  }
+
+ 

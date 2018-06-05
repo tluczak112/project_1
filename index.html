@@ -115,8 +115,13 @@
     <!-- main page css -->
     <div class="main-page">
         <nav class="logo transparent">
-            <div class="nav-wrapper valign-wrapper">
+            <div class="nav-wrapper">
                 <a href="#" class="brand-logo center flow-text">LOGO</a>
+                <ul id="nav-mobile" class="right">
+                    <li>
+                        <a class="fav-link"><i class="fas fa-heart"></i> Your Favorite Artists</a>
+                    </li>
+                </ul>
             </div>
         </nav>
      
@@ -131,7 +136,7 @@
 
                     <div class="input-field col m1 submit left-align">
                         <button class="btn-floating btn-large waves-effect waves-light cyan darken-2" id="select-artist" type="submit" name="action"> 
-                            <i class="material-icons">search</i>
+                            <i class="material-icons ">search</i>
                         </button>
                     </div>
             
@@ -148,9 +153,9 @@
                             <div class="card-content white-text" id="artist-title">
                                 <span class="card-title cyan-text text-darken-2" id="artist-name" ></span>
                                 <a class="btn-floating btn tooltipped
-                                    pulse halfway-fab waves-effect waves-light deep-orange lighten-3" data-tooltip='Add to favourite' 
+                                    halfway-fab waves-effect waves-light favt" data-tooltip='Add to favourite' 
                                     data-position="top">
-                                    <i class="material-icons">favorite</i>
+                                    <i class="material-icons favorite-icon">favorite</i>
                                 </a>
                             </div>
                             <div class="card-action">
@@ -251,13 +256,29 @@
                         <img src="assets/images/top-pic-vdo.png" class="top-img">
                     </div>
                     <div class="card-action">
-                            <ul class="collection" id="genre-track">
-                               
-                            </ul>
+                            <ul class="collection" id="genre-track"></ul>
                     </div>
                 </div>
             </div>
-           
+          </div>
+         
+            <!-- favorites -->
+            <div class="row favorite-div">
+                <div class="col s12">
+                    <div class="card grey darken-4 user-favorites z-depth-5">
+                        <div class="card-content white-text">
+                            <span class="card-title cyan-text text-darken-2">My Favorite Artists</span>
+                            <img src="assets/images/fav.png" class="fav-img">
+                        </div>
+                        <div class="card-action">
+                            <div class="row" id="list-favorites">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
     <!-- end of container -->
    </div>
 
