@@ -318,7 +318,7 @@ $(document).ready(function () {
         clearSelectedGenre();
         $(this).removeClass("cyan darken-2").addClass("red darken-4"); 
         var genre = $(this).attr("data-genre");
-        var queryURLTag = "http://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag="+genre+"&api_key="+apiKeyLastFm+"&format=json";
+        var queryURLTag = "https://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag="+genre+"&api_key="+apiKeyLastFm+"&format=json";
         genreDiv.show();
         hideAll();
         $.ajax({
