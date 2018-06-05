@@ -181,6 +181,10 @@ nav .brand-logo{
      padding:0 50px;
  }
 
+ .fav-link:hover{
+     color: cyan;
+ }
+
  .fav-link .fa-heart{
      color:red;
  }
