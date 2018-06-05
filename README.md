@@ -1,5 +1,3 @@
-# project_1
-
 <h1> Project 1 - Music Tickets & Lyrics App </h1>
 </br>
 <h2>Getting Started</h2>
