@@ -165,13 +165,14 @@ $(document).ready(function () {
                             }
                         },
                         error: function (xhr, status, err) {
-
                         }
                     });   //4th api call  
                 });//3rd api
+            }).fail(function(){
+                console.log("track not found");
             });//2nd api
         }).fail(function(){
-            // console.log("error");
+            console.log("artist not found");
             artistDetailDiv.hide();
             trackDiv.hide();
             playDiv.hide();
@@ -207,6 +208,8 @@ $(document).ready(function () {
                 lyricsDiv.hide();
             }
             i++;
+        }).fail(function(){
+            console.log("video not found");
         });
     }
 
@@ -246,7 +249,7 @@ $(document).ready(function () {
             lyricsDiv.show();
 
         }).fail(function () {
-            console.log("***error");
+            console.log("lyric not found");
             $(".lyric-title").empty();
             $(".show-lyrics").empty();
             $(".lyrics-title").html("<h1>Lyric: " + inputTrack+"</h1><br><span class='message'>Lyric Not Found :(</span>");
@@ -311,6 +314,8 @@ $(document).ready(function () {
             iconContainer.append(playIcon);
             listDiv.append(thumbnailImage,songTitle,artist,iconContainer);
             $("#genre-track").append(listDiv);
+        }).fail(function(){
+            console.log("youtube video not found");
         });
       }
 
@@ -339,7 +344,7 @@ $(document).ready(function () {
                   linkToYoutube(track, artistName); 
             }
         }).fail(function() {
-            // console.log("error");
+             console.log("genre not found");
         });
       });
       
