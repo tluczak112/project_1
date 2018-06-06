@@ -445,6 +445,7 @@ $(document).ready(function () {
     //    console.log(favorites);
        hideAll();
        genreDiv.hide();
+       nowplayDiv.empty();
        clearSelectedGenre();
        favoriteDiv.show();
        showFavArtists();
