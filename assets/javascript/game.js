@@ -235,7 +235,7 @@ $(document).ready(function () {
     function getLyrics(artist, inputTrack) {
         var apiLyrics = "3ovTtzy3bh4BgFmV33tZ1xoRY5DbXgj7azJKfxROe8b6kbMhc8tIWBPnP5dHDypJ";
         var queryUrlLyrics = "https://orion.apiseeds.com/api/music/lyric/" + artist + "/" + inputTrack + "?apikey=" + apiLyrics;
-
+       
         $.ajax({
             url: queryUrlLyrics,
             method: "GET"
