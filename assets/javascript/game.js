@@ -235,16 +235,18 @@ $(document).ready(function () {
     function getLyrics(artist, inputTrack) {
         var apiLyrics = "3ovTtzy3bh4BgFmV33tZ1xoRY5DbXgj7azJKfxROe8b6kbMhc8tIWBPnP5dHDypJ";
         var queryUrlLyrics = "https://orion.apiseeds.com/api/music/lyric/" + artist + "/" + inputTrack + "?apikey=" + apiLyrics;
-       
+       console.log(queryUrlLyrics);
         $.ajax({
             url: queryUrlLyrics,
             method: "GET"
         }).then(function (response) {
             $(".lyric-title").empty();
+            $(".show-lyrics").empty();
             var lyric = response.result.track.text.replace(/(?:\r\n|\r|\n)/g, '<br>');
             var inputTrackHtml = $("<h1>").text(artist + " : " + inputTrack);
             $(".lyrics-title").html(inputTrackHtml);
-            $(".show-lyrics").html(JSON.stringify(lyric));
+            var lyricHtml = $('<marquee class="show-lyrics" behavior="scroll" direction="up" scrollamount="2">').html(JSON.stringify(lyric));
+            $(".show-lyrics").append(lyricHtml);
 
             lyricsDiv.show();
 
