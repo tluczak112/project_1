@@ -326,6 +326,7 @@ $(document).ready(function () {
         // console.log("hello");
         $("#genre-track").empty();
         bottomDiv.empty();
+        nowplayDiv.empty();
         clearSelectedGenre();
         $(this).removeClass("cyan darken-2").addClass("red darken-4"); 
         var genre = $(this).attr("data-genre");
