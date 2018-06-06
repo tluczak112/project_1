@@ -20,6 +20,7 @@ $(document).ready(function () {
     favoriteDiv.hide();
     var errorDiv = $(".error-div");
     errorDiv.hide();
+    var recentsDiv = $(".recents-div");
     var apiKeyLastFm ="c5170f76db40cf305fa1f7989ee80687";
     // local Storage
     var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -62,8 +63,8 @@ $(document).ready(function () {
         favoriteDiv.hide();
         errorDiv.hide();
         clearSelectedGenre();
-        $(".recents-here").hide();
-        $("#recents-title").hide();
+        recentsDiv.hide();
+       
 
         //1st api call
         $.ajax({
@@ -329,8 +330,7 @@ $(document).ready(function () {
         $(this).removeClass("cyan darken-2").addClass("red darken-4"); 
         var genre = $(this).attr("data-genre");
         var queryURLTag = "https://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag="+genre+"&api_key="+apiKeyLastFm+"&format=json";
-        $(".recents-here").hide();
-        $("#recents-title").hide();
+        recentsDiv.hide();
         genreDiv.show();
         hideAll();
         $.ajax({
@@ -407,13 +407,12 @@ $(document).ready(function () {
             var recentArtistImgTag = $("<img>").attr("src", recentArtistImg);
             recentArtistImgTag.attr("data-recentName", recentArtistName);
             recentArtistImgTag.addClass("recent-artist-name");
-            var recentArtistNameP = $("<p>").html(recentArtistName);
-            recentArtistImgTag.append(recentArtistNameP);
+            var recentArtistNameP = $("<span>").html(recentArtistName);
+            recentArtistNameP.append(recentArtistImgTag);
             recentArtistNameP.addClass("flow-text fav-artist-name");
             recentArtistImgTag.addClass("responsive-img circle fav-artist-img");
-            $(".recents-here").addClass("row");
             $(".recents-here").append(recentArtistImgTag, recentArtistNameP);
-
+            
         }
     }
 
@@ -480,8 +479,7 @@ $(".recents-here").on("click", ".recent-artist-name", function (event){
    //show favorites
    $(".fav-link").on("click",function(event){
     //    console.log(favorites);
-       $(".recents-here").hide();
-       $("#recents-title").hide();
+       recentsDiv.hide();
        hideAll();
        genreDiv.hide();
        clearSelectedGenre();
@@ -530,8 +528,7 @@ $(".recents-here").on("click", ".recent-artist-name", function (event){
         bottomDiv.hide();
         favoriteDiv.hide();
         errorDiv.hide();
-        $(".recents-here").hide();
-        $("#recents-title").hide();
+        recentsDiv.hide();
     }
 
 });

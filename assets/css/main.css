@@ -131,7 +131,7 @@ nav .brand-logo{
 }
 .show-lyrics{
     /* overflow-y: scroll; */
-    height:400px;
+    height:500px;
 }
 
 .collection .collection-item.avatar:not(.circle-clipper)>.circle, .collection .collection-item.avatar :not(.circle-clipper)>.circle{
@@ -226,6 +226,7 @@ nav .brand-logo{
     left:20px;
     transform: rotate(-30deg);
 }
+
 
 .search-img{
     height:80px;
