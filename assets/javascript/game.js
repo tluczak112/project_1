@@ -23,6 +23,8 @@ $(document).ready(function () {
     var apiKeyLastFm ="c5170f76db40cf305fa1f7989ee80687";
     // local Storage
     var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    var recentArtists = JSON.parse(localStorage.getItem("recentArtists")) || [];
+    showRecents(recentArtists);
 
     // generate top 10 tags
     function generateGenre() {
@@ -60,6 +62,8 @@ $(document).ready(function () {
         favoriteDiv.hide();
         errorDiv.hide();
         clearSelectedGenre();
+        $(".recents-here").hide();
+        $("#recents-title").hide();
 
         //1st api call
         $.ajax({
@@ -88,7 +92,9 @@ $(document).ready(function () {
                 artistImageHtml.attr("data-caption", artistName);
                 var artistBioHtml = $("#artist-bio").html(artistBio);
                
+                addToRecents(artistName, artistImageUrl);
                 
+
                 $(".favt").attr("data-fav",artistName);
                 $(".favt").attr("data-favImg",artistImageUrl);
 
@@ -246,7 +252,7 @@ $(document).ready(function () {
             lyricsDiv.show();
 
         }).fail(function () {
-            console.log("***error");
+            // console.log("***error");
             $(".lyric-title").empty();
             $(".show-lyrics").empty();
             $(".lyrics-title").html("<h1>Lyric: " + inputTrack+"</h1><br><span class='message'>Lyric Not Found :(</span>");
@@ -323,6 +329,8 @@ $(document).ready(function () {
         $(this).removeClass("cyan darken-2").addClass("red darken-4"); 
         var genre = $(this).attr("data-genre");
         var queryURLTag = "https://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag="+genre+"&api_key="+apiKeyLastFm+"&format=json";
+        $(".recents-here").hide();
+        $("#recents-title").hide();
         genreDiv.show();
         hideAll();
         $.ajax({
@@ -378,6 +386,43 @@ $(document).ready(function () {
        searchBandsInTown(artist);
     });
 
+
+    //adding to recents
+    
+    function addToRecents(artistName, artistImageUrl){
+        console.log(artistName);
+        console.log(artistImageUrl);
+        console.log(recentArtists);
+        if (findObjectByKey(recentArtists, "artistName", artistName) === -1){
+            recentArtists.push({ artistName, artistImageUrl });
+            localStorage.setItem("recentArtists", JSON.stringify(recentArtists));
+        }
+    }
+
+    function showRecents(recentArtists){
+        for (i = 0; i < recentArtists.length; i++){
+            console.log(recentArtists[i].artistName, recentArtists[i].artistImageUrl);
+            var recentArtistName = recentArtists[i].artistName;
+            var recentArtistImg = recentArtists[i].artistImageUrl;
+            var recentArtistImgTag = $("<img>").attr("src", recentArtistImg);
+            recentArtistImgTag.attr("data-recentName", recentArtistName);
+            recentArtistImgTag.addClass("recent-artist-name");
+            var recentArtistNameP = $("<p>").html(recentArtistName);
+            recentArtistImgTag.append(recentArtistNameP);
+            recentArtistNameP.addClass("flow-text fav-artist-name");
+            recentArtistImgTag.addClass("responsive-img circle fav-artist-img");
+            $(".recents-here").addClass("row");
+            $(".recents-here").append(recentArtistImgTag, recentArtistNameP);
+
+        }
+    }
+
+$(".recents-here").on("click", ".recent-artist-name", function (event){
+    var artistName = $(this).attr("data-recentName");
+    console.log(artistName);
+    searchBandsInTown(artistName);
+
+});
 
     //adding to favorite
     $(".favt").on("click",function(event){
@@ -435,6 +480,8 @@ $(document).ready(function () {
    //show favorites
    $(".fav-link").on("click",function(event){
     //    console.log(favorites);
+       $(".recents-here").hide();
+       $("#recents-title").hide();
        hideAll();
        genreDiv.hide();
        clearSelectedGenre();
@@ -483,6 +530,8 @@ $(document).ready(function () {
         bottomDiv.hide();
         favoriteDiv.hide();
         errorDiv.hide();
+        $(".recents-here").hide();
+        $("#recents-title").hide();
     }
 
 });
